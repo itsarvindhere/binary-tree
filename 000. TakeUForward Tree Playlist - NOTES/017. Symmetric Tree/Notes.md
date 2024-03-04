@@ -46,7 +46,7 @@ We can first go over all the nodes in the root.left subtree.
 
 And then, we go over all the nodes in root.right subtree and keep comparing them to the left subtrees nodes. If at any place they mismatch, we know the tree is not symmetric.
 
-The code is a bit lengthy because we have to while loops one after the other. But, we can do all this in a single while loop as well.
+The code is a bit lengthy because we have two while loops one after the other. But, we can do all this in a single while loop as well.
 
 # DFS APPROACH - ITERATIVE - ONE PASS
 
