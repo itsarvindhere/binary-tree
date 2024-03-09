@@ -14,7 +14,7 @@ For above Binary Tree, the output is -
 
     [1,2,3]
 
-# APPROACH
+# RECURSIVE DFS APPROACH
 
 We will use the Pre-Order Traversal in this problem, the reason being that it is the simplest of the three to implement. We can do it using other two traversals in DFS, but that will make the code a bit more complicated.
 
@@ -71,3 +71,40 @@ So, here are the key points -
 
 3. If none of the left or right traversals give us True, it means the target node is not on current path so the root node needs to be removed from the path list and we return False.
 
+# ITERATIVE DFS APPROACH
+
+The Iterative Solution is very simple once you understand the main part of it which is the removal of nodes from the path that are no longer useful.
+
+We will use a stack in this approach where initially, the stack has the root node. Then, as we do in Pre-Order traversal, we first push right child and then the left child, if they exist.
+
+And in each iteration, we will pop the top of the stack and push that node's value in the current path so far. If the node we popped is the node that we want to reach, it means we are done and we have the path that we want.
+
+But, if the node we popped is not the target node and it is also the leaf node, it means at current path, we can never find the target node because we are already at the root node. So, at that point, we have to remove this leaf node from path but that is not enough.
+
+Beacuse it is also possible that the node before it is also of no use anymore.
+
+![alt text](image-2.png)
+
+Suppose we have the tree above. We want to reach node with value = 7.
+
+At some point, we will reach the node {4} and we will see that this is a leaf node. At that point, our path will look like this -> [1,2,4]
+
+So, we will pop "4" because it is a leaf node and it is also not the target node. So, path becomes [1,2]
+
+Next, we will reach "5" and again, the same thing happens. Path becomse [1,2] after we remove "5".
+
+And after that, do you think "2" is of any use? NO! Because we already traversed its left and right children and we found that none of the two can lead us to target node. It means our path to the target node cannot include the node {2} as well. So we pop it as well. And again, we check if node {1} is useful or not. We see that the node we just popped is {2} and it is the left child. But, there is till right side to cover. 
+
+So, there are two rules based on which we will pop a node from the end of current path - 
+
+    1. The node we just popped is the right child of the node at the end of current path
+    2. The node we just popped is the left child of the node at the end of current path, but the node at the end of current path has no right child.
+
+Both these scenarios mean we have covered both left and right sides of the node at the end of current path and we did not find the target node in either direction so it should be removed as well.
+
+
+# ITERATIVE BFS (Level Order Traversal) APPROACH
+
+The Level Order Traversal approach is very straightforward. As we traverse each node in a level, we will keep track of the path to that node. And as soon as we find the target node, we can straight away return the path till that node since we are already keeping track of the path so far.
+
+It is important to note that when we push the left or the right child of "node" in the queue, we will do a deep copy of the path till "node" because remember that new_list = my_list doesn't actually create a second list. The assignment just copies the reference to the list, not the actual list, so both new_list and my_list refer to the same list after the assignment.

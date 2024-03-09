@@ -11,7 +11,6 @@ class Solution:
     def preOrder(self, root, path, val):
         
         # Base case
-        # If we reach the leaf node, it means node with value = val is not on this path
         if not root: return False
         
         # Take the root node and put it in the path list
