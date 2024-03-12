@@ -22,7 +22,7 @@ It is not hard to think that since width depends on the level and the nodes in t
 
 Now you may think that we can use a Queue to keep all the nodes as we traverse the tree, even the ones that are Null. But, if you try to write such a solution, the chances are that you will face "Memory limit exceeded" issue. We need to play smart here. We need a way in which for any level, we can quickly find what is the width of the tree at that level.
 
-For that, let's take a tree that is fully filled.
+For that, let's take a tree that is fully filled (A Perfect Binary Tree)
 
 ![alt text](image-1.png)
 
@@ -54,14 +54,13 @@ When we were at the node with number = 3, its left child was numbered as 6 and i
 Based on this, we can say that -
 
     If a node is numbered as "i", its left child will be numbered as  "2*i"
-
     If a node is numbered as "i", its right child will be numbered as  "(2*i) + 1"
 
 So, if we follow these rules, then we do not even need to care about Null nodes because following these rules for numbering will ensure that we number all the nodes in a tree in correct way as if the tree was full.
 
 ![alt text](image-3.png)
 
-Take the above tree as an example. There are a few of Null nodes in between. Let's see how we will number the non null nodes.
+Take the above tree as an example. There are a few Null nodes in between. Let's see how we will number the non null nodes.
 
 We start with root node {1} so it is numbered as "1".
 
@@ -77,7 +76,6 @@ And that's the whole approach.
 
 For any level, the width is simply - 
 
-    rightmost node's number - leftmost node'
-    s number + 1
+    rightmost node's number - leftmost node's number + 1
 
 And we just need to find the maximum value of the above formula for a Binary Tree. That would be the maximum width.
