@@ -50,3 +50,9 @@ Next, we have {2}. On top, we have {5} which we have already visited so we don't
 The distance is now updated to "2".
 
 And since k is also 2, it means the nodes that are present in the queue at this point are all at a distance of "2" from the target node. And so, we can stop now and return the node values.
+
+So, the bottom line is that, since we are asked for nodes at a distance of "k" in all directions, we also have to keep track of the parent nodes so that it is helpful when we have to traverse top.
+
+If we were only asked for nodes at a distance k on bottom side, then we wouldn't have required a dictionary at all because in that case, we would've simply traversed towards the bottom which we normally do in tree traversal.
+
+But here, since we also have to traverse top, we have to keep track of parent nodes. So basically, we are turning the Binary Tree into an "Undirected Graph" here. In an Undirected Graph as well, the edges between two nodes are bidirectional which means we can go from Node A to B and also from B to A.
