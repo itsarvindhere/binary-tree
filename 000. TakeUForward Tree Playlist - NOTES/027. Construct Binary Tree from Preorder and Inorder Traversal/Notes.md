@@ -52,7 +52,7 @@ How can this information be useful in this problem?
 	
 		preorder = [20,15,7] and inorder = [15,20,7]
 		
-	So, we can built the left and right subtrees and then simply attach them to the root node.
+	So, we can build the left and right subtrees and then simply attach them to the root node.
 	
 	So, we started with preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
 	
