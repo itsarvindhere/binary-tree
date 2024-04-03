@@ -12,31 +12,29 @@ class Solution:
         if not root: return
         
         # Flatten the left subtree
-        leftSubtree = self.flatten(root.left)
+        self.flatten(root.left)
         
         # Flatten the right subtree
-        rightSubtree = self.flatten(root.right)
-        
-        # Make the left child as Null
-        root.left = None
-        
-        # Make the right child as the flattened right subtree
-        root.right = rightSubtree
+        self.flatten(root.right)
         
         # If we have a flattened left subtree
-        if leftSubtree:
+        if root.left:
+            
+            # Save the right subtree
+            prevRight = root.right
             
             # Make it the right child of root
-            root.right = leftSubtree
+            root.right = root.left
             
             # Traverse till the end of this flattened tree
-            while leftSubtree.right: leftSubtree = leftSubtree.right
+            temp = root.left
+            while temp.right: temp = temp.right
                 
             # And make its right child as the flattened right subtree
-            leftSubtree.right = rightSubtree
-        
-        # Finally, return the root node
-        return root
+            temp.right = prevRight
+            
+        # Finally, do not forget to set the left child as Null
+        root.left = None
 
 root = TreeNode(1)
 root.left = TreeNode(2)
