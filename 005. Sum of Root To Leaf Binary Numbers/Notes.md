@@ -24,7 +24,7 @@ This is definitely not an efficient approach because as we find one binary numbe
 # **2. EFFICIENT APPROACH**
 I was not able to write this solution on my own and had to look at the discussion section. But, once you understand the idea, you'll see how interesting this approach is.
 
-![image](https://assets.leetcode.com/users/images/535637ff-51b6-4f34-a7c1-5d6662f804e0_1712503360.264727.png)
+![alt text](image.png)
 
 Suppose, we are given the above binary tree.
 
@@ -63,6 +63,26 @@ So now, what will be the new total sum? The current node has a value 0.
 As per our general formula, it will be 2 * 2 + 0 => 4
 
 And indeed, the sum from root to leftmost leaf is 4.
+
+![alt text](image-1.png)
+
+And now comes the magic of Recursion into picture. See, when we are at the left child of root node, that is {0}, the left subtree will return us the total sum as "4" which is the binary number "100" converted to decimal.
+
+Now, remember that at node {0}, the total sum is "2".
+
+So when the recursive call is made for its right subtee, it will return sum as "5", which is the binary number "101" converted to decimal.
+
+How we get 5? Well, we do the same thing. That is -
+
+    (2 * totalSum) + node.val
+    (2 * 2) + 1
+    4 + 1 => 5
+
+And now, at node {0}, left subtree's total sum is 4 and right subtree's total sum is 5. So, what {0} returns back to the root node {1} is the sum of left and right subtrees which is 9. That is, the sum of "100" and "101" after converting them to decimal is "9".
+
+And similarly, the same thing happens for the right subtree of the root node, which gives its total sum as -> 13
+
+And so, for the whole tree, the total sum will be 9 + 13 => 22.
 
 And this is the efficient approach to find the total sum.
 
