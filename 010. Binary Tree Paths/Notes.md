@@ -24,11 +24,11 @@ And at any point, if the node that we popped from the stack is a leaf node, we c
 
 Now comes the part that will take the most amount of time while writing this solution. Now, how do we remove the nodes from the current path that we know won't be of any use in upcoming iterations?
 
-See, if the current node is a leaf node, then obviouslt it won't be of any use in next iterations so we can straight away remove it from current path.
+See, if the current node is a leaf node, then obviously it won't be of any use in next iterations so we can straight away remove it from current path.
 
 But, what about other nodes before it?
 
-![alt text](image-1.png)
+![image](https://assets.leetcode.com/users/images/1694df59-cc0c-4cc2-a5b4-cc1873ccafcf_1709893420.2790706.png)
 
 Suppose we have the above Binary Tree as the test case. 
 
@@ -36,7 +36,7 @@ When we are at the node {2}, our currentPath will look like [4,3,1,2] and since 
 
 But, we can see that we also do not need the nodes {1} and {3} now. So, how to remove them? Well that's pretty simple.
 
-We know that node {2} is the "right" child of {1}. And since we covered {2}, it means we covered both the left and right children of {1} because this is a Pre Order traversal. So, it means {1} is of now use now because both its children have been traversed (let's assume that there were two children).
+We know that node {2} is the "right" child of {1}. And since we covered {2}, it means we covered both the left and right children of {1} because this is a Pre Order traversal. So, it means {1} is of no use now because both its children have been traversed (let's assume that there were two children).
 
 Now, what about {3}? We see that for {3}, its left child is {1}. But, there is no right child. And since we removed {1}, it means we have already covered the left side of {3} as well so even {3} is of no use now. And so, we remove {3} as well.
 
