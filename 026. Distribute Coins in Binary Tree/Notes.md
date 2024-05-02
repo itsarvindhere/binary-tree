@@ -20,7 +20,7 @@ The idea is that for any node, there are two possibilities - Either it will give
 
 Since it is given that sum of all node values in any test case will be equal to "n", or the number of nodes, it means, for any tree with root as "root", if we know how much excess coins are on left and right, we can then easily find how many moves will be needed to make sure each node has 1 coin.
 
-![image](https://assets.leetcode.com/users/images/439c7fc3-088a-4299-8a53-3a727e72f1ca_1714667434.2734914.png)
+![alt text](image-1.png)
 
 Suppose we have the above binary tree.
 
