@@ -32,7 +32,7 @@ And the same with the above tree.
 So, the conclusion is that, if we are given a Pre-Order and Post-Order traversal of a Binary Tree, we cannot create a unique Binary Tree from that. There can be multiple trees that have the same Pre-Order and Post-Order traversal result.
 
 
-# WHAT IS WE ARE GIVEN THE IN-ORDER & PRE-ORDER TRAVERSALS OF A TREE?
+# WHAT IF WE ARE GIVEN THE IN-ORDER & PRE-ORDER TRAVERSALS OF A TREE?
 
 Now, let's consider the case where we have In-Order and Pre-Order traversals of a Tree given to us. Can we create a unique Binary Tree from that data?
 
