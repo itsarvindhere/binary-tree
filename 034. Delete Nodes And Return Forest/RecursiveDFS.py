@@ -7,23 +7,17 @@ class TreeNode:
 class Solution:
         
     # Recursive function to delete the nodes
-    def deleteNodes(self, root, parent, isLeftChild, to_delete, parentNodes, rootNodes):
+    def deleteNodes(self, root, parent, isLeftChild, to_delete, rootNodes):
         
         # Base Case
         if not root: return
         
-        # Update the parent node of the current node along with the flag for left child
-        parentNodes[root] = [parent, isLeftChild]
-        
         # If the current node has to be removed
         if root.val in to_delete:
             
-            # Get its parent node and the flag that shows if it is a left child or not
-            parent, isLeft = parentNodes[root]
-            
             # If parent is not None, let the parent know that this node is deleted
             if parent:
-                if isLeft: parent.left = None
+                if isLeftChild: parent.left = None
                 else: parent.right = None
                 
             # If this node exists in the rootNodes set, remove it
@@ -37,13 +31,13 @@ class Solution:
         # Then, only add it as the root of a tree if it has been detached from its parent
         # That is, if its parent has been deleted already
         # The only exception here is the root node which does not have any parent, hence the "not" check
-        elif not parentNodes[root][0] or parentNodes[root][0].val in to_delete: rootNodes.add(root)
+        elif not parent or parent.val in to_delete: rootNodes.add(root)
             
         # Traverse left
-        self.deleteNodes(root.left, root, True, to_delete, parentNodes, rootNodes)
+        self.deleteNodes(root.left, root if root.val not in to_delete else None, True, to_delete, rootNodes)
         
         # Traverse right
-        self.deleteNodes(root.right, root, False, to_delete, parentNodes, rootNodes)
+        self.deleteNodes(root.right, root if root.val not in to_delete else None, False, to_delete, rootNodes)
         
     
     def delNodes(self, root, to_delete):
@@ -51,14 +45,11 @@ class Solution:
         # Convert the list to a set just to make it easier to lookup
         to_delete = set(to_delete)
         
-        # A dictionary to keep track of the parent node of each node in the tree
-        parentNodes = {}
-        
         # A set to keep all the root nodes of the individual trees that are formed when we delete some node
         rootNodes = set()
         
         # Traverse the tree and delete the required nodes
-        self.deleteNodes(root, None, False, to_delete, parentNodes, rootNodes)
+        self.deleteNodes(root, None, False, to_delete, rootNodes)
         
         # Return the "rootNodes" set as a list
         return list(rootNodes)
