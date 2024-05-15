@@ -29,11 +29,11 @@ So, at the end of both the calls, we should have a flatten left subtree as 2 -> 
 
 And now, its time to join them with the root node correctly.
 
-As the problem statement says, we have to make left child of root as Null, then we need to attach the portion "2 -> 3 -> 4" to the root, and then we need to attack the portion "5 -> 6" to the end of "2 -> 3 -> 4".
+As the problem statement says, we have to make left child of root as Null, then we need to attach the portion "2 -> 3 -> 4" to the root, and then we need to attach the portion "5 -> 6" to the end of "2 -> 3 -> 4".
 
 And eventually, we get "1 -> 2 -> 3 -> 4 -> 5 -> 6"
 
-Now, the problem here is that when we get a flat left subtree, we do not know what is the last node in that tree. And this is important because we can only attach the flat right subtree to the end of a flat left subtree, we we know the last node. Because to this last node, we have to attach the flat right subtree.
+Now, the problem here is that when we get a flat left subtree, we do not know what is the last node in that tree. And this is important because we can only attach the flat right subtree to the end of a flat left subtree, if we know the last node. Because to this last node, we have to attach the flat right subtree.
 
 And so, for that, we have to again traverse the left subtree just to reach this last node, and this means, we are doing an extra traversal inside a traversal. And that's not efficient. Yes, this will pass all the test cases but still, we can do better.
 
